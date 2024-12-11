@@ -1,0 +1,12 @@
+Greetings,
+
+Here is your question:
+
+   In 1986, a computer game "Street Hawk" was made after the popular TV series.  What computer was the game made for?
+
+--Professor Gershman
+
+
+Answer: "Street Hawk" was developed for the ZX Spectrum home computer. A version for the Amstrad CPC computer was made and sold also in 1986. While they were selling, development for a version for the Commodore 64 was in progress. Due to ongoing delays in production, it was scrapped after 90% was completed already.
+
+-Darrel

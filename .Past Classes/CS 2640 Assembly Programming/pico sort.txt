@@ -1,0 +1,57 @@
+0,	LDA x
+1,	CMP y
+2,	SNS
+3,	JMP xgty
+4,	CMP z
+5,	SNS
+6,	JMP yxz
+7,	LDA y
+8,	CMP z
+9,	SNS
+10,	JMP yzx
+11, zyx:	STA 124
+12,	LDA x
+13,	STA 123
+14,	LDA z
+15,	STA 125
+16,	HLT
+17, yzx:	STA 125
+18,	LDA x
+19,	STA 123
+20,	LDA z
+21,	STA 124
+22,	HLT
+23, yxz:	STA 124
+24,	LDA y
+25,	STA 125
+26,	LDA z
+27,	STA 123
+28,	HLT
+29, xgty:	CMP z
+30,	SNS
+31,	JMP xgtz
+32, zxy:	STA 124
+33,	LDA y
+34,	STA 123
+35,	LDA z
+36,	STA 125
+37,	HLT
+38, xgtz:	LDA y
+39,	CMP z
+40,	SNS
+41,	JMP xyz
+42, xzy:	STA 123
+43,	LDA z
+44,	STA 124
+45,	LDA x
+46,	STA 125
+47,	HLT
+48, xyz:	STA 124
+49,	LDA x
+50,	STA 125
+51,	LDA z
+52,	STA 123
+53,	HLT
+120, x:	10
+121, y:	15
+122, z:	15

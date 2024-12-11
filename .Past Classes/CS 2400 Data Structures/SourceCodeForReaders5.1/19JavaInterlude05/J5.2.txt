@@ -1,0 +1,3 @@
+Because the interface Comparable is in the standard package java.lang,  
+you can use it in your program without an import statement.
+

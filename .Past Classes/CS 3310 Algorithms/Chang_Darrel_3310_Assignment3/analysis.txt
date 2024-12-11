@@ -1,0 +1,27 @@
+Analysis of Canoe Renting Program
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Description of Recursive Formula:
+The CanoeRental program leverages the Floyd-Warshall algorithm to calculate an all pair shortest path matrix. This calculates the optimal cost between any two posts.
+To update the optimal cost matrix we use the following recursive calculation:
+
+OptCost(1) = Cost(0,1)
+for x > 1 {
+    OptCost(x) = min { Cost(0,x),
+    OptCost(1) + Cost(1,x),
+    OptCost(2) + Cost(2,x),
+    ...,
+    OptCost(x-1) + Cost(x-1,x)
+    }
+}
+
+To get the post x, we can go there directly from Cost(0,x) or use intermediate posts. We find the cheapest way of getting from the starting post to each intemediate step.
+Then choosing the minimum of all the possible routes to find the optimal solution
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Theoretical analysis of runtime:
+    Time Complexity:
+The Floyd-Warshall algorithm has a time complexity of O(n^3), where n represents the number of posts along the river
+This is due to the three nested for loops used to iterate through all pairs of posts, with each loops having max of n iterations
+    Space Complexity:
+The space complexity is O(n^2) since we use a 2D array to represent the cost of traveling between posts

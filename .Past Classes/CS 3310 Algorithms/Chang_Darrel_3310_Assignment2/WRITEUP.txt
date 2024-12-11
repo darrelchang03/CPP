@@ -1,0 +1,24 @@
+What is the theoretical worst-case running time of the algorithm you implemented
+(i.e. in Θ-notation), expressed in terms of the number of words n in the input
+file? Justify your answer.
+
+The components that contribute to time complexity are:
+
+Reading lines from input file:
+    Reading lines from input has a time complexity of O(n), where n is the number of words in the file
+Preprocessing words:
+    Preprocessing nomalizes, converts to lowercase, removes accents, and removing special characters and spaces. Since we do each of these character by character
+    once for each string, if there are M characters for all strings in the input file the time complexity would be O(M)
+Sorting strings:
+    The program uses the Array.sort built in method, while leverages the Timsort that has a O (M * log (M)) time complexity, where M represents the number of characters in a string.
+    Since we do this once per string, the total time complexity would be O( K * M * log(M)) where K are the number of unique preprocessed strings.
+Grouping strings:
+    The program will interate through the list of preprocessed strings and group them. In the worst case where no strings are anagrams of each other, it will interate
+    over all the strings, which is a O(K) time complexity
+Output:
+    Outputing the results involves printing each string once. With N number of strings/words, this has O(N) time complexity
+
+The dominant factors in time complexity for this program comes from sorting the strings, which has a O( K * M * log(M)) time complexity.
+K represents the number of unique preprocessed strings
+M represents the number of characters across all strings in the input file
+

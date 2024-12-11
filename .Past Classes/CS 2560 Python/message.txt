@@ -1,0 +1,178 @@
+import random
+from sympy import primerange
+
+def task1():
+   
+    # Test Run 1
+   
+    print("Test Run 1:")
+    print()
+    
+    usernames = ('lyang', 'kSimon', 'danny', 'tomatcpp', 'csDept', 'CoScpp', 'broncoWins', 'ponyExp', 'BldgAndRooms', 'helloKitty')
+    passwords = ['sheCodes#123', 'catchAllGood1%', '@my2Choices', '123abc;;;', 'Hello2Monday$', 'GoodFriday@Cpp2', 'CS2520@Python', 'JavaIsHot2!', '2ManyRainingDays!', '1Startup@Starbucks']
+    accInfo = dict(zip(usernames, passwords))
+    
+    def authenticate_user(user_dict):
+        attempts = 3
+        while attempts > 0:
+            username = input("Enter username: ")
+            if username in user_dict:
+                password = input("Enter password: ")
+                if user_dict[username] == password:
+                    print("Login successful!")
+                    return username
+                else:
+                    print("Incorrect password.")
+                    attempts -= 1
+            else:
+                print("Username not found.")
+                attempts -= 1
+        print("Login unsuccessful.")
+        return None
+    
+    def create_user(user_dict):
+        username = input("Enter new username: ")
+        if username in user_dict:
+            print("Username already exists.")
+            return None
+        password = input("Enter new password: ")
+        if not (len(password) >= 8 and any(char.islower() for char in password) and any(char.isupper() for char in password) and any(char.isdigit() for char in password) and any(char.isascii() and not char.isalnum() for char in password)):
+            print("Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.")
+            return None
+        user_dict[username] = password
+        print(f"User '{username}' created successfully!")
+        return username
+    
+    def update_password(user_dict, username):
+        current_password = input("Enter current password: ")
+        if user_dict.get(username) == current_password:
+            new_password = input("Enter new password: ")
+            if not (len(new_password) >= 8 and any(char.islower() for char in new_password) and any(char.isupper() for char in new_password) and any(char.isdigit() for char in new_password) and any(char.isascii() and not char.isalnum() for char in new_password)):
+                print("New password must meet the format requirements.")
+                return False
+            user_dict[username] = new_password
+            print("Password updated successfully.")
+            return True
+        else:
+            print("Incorrect current password.")
+            return False
+    
+    # Test Run 1
+    print("\nLogin, Add User, and Update Password Scenarios for Test Run 1:")
+    username = authenticate_user(accInfo)
+    if username:
+        print(f"Logged in as {username}")
+    
+    new_username = create_user(accInfo)
+    if new_username:
+        print(f"Welcome, {new_username}!")
+    
+    if username:
+        update_password(accInfo, username)
+    
+    print("-------------------")
+    
+    # Test Run 2
+    print("\nTest Run 2:")
+    usernames2 = ('andy1', 'andy2', 'andy3', 'andy4', 'andy5', 'andy6', 'andy7', 'andy8', 'andy9', 'andy10', 'andy11', 'andy12')
+    passwords2 = ['pass1', 'pass2', 'pass3', 'pass4', 'pass5', 'pass6', 'pass7', 'pass8', 'pass9', 'pass10', 'pass11', 'pass12']
+    accInfo2 = dict(zip(usernames2, passwords2))
+    print("Initial usernames and passwords for Test Run 2:")
+    print(accInfo2)
+    
+    print("\nLogin, Add User, and Update Password Scenarios for Test Run 2:")
+    username2 = authenticate_user(accInfo2)
+    if username2:
+        print(f"Logged in as {username2}")
+    
+    new_username2 = create_user(accInfo2)
+    if new_username2:
+        print(f"Welcome, {new_username2}!")
+    
+    if username2:
+        update_password(accInfo2, username2)
+    
+    
+
+
+
+def task2():
+   
+    print("Test Run 1:")
+    
+    
+    L1 = list(primerange(2, 231))[:50]  
+    L2 = [random.randint(0, 100) for _ in range(50)]  
+
+
+    S1 = set(L1)
+    S2 = set(L2)
+
+    
+    print(f"Number of elements in set S1: {len(S1)}")
+    print(f"Number of elements in set S2: {len(S2)}")
+
+    
+    R1 = S1.intersection(S2)  
+    R2 = S1.symmetric_difference(S2)  
+
+    
+    print(f"Number of elements in set R1: {len(R1)}")
+    print(f"Number of elements in set R2: {len(R2)}")
+
+    # Test Run 2
+    print("\nTest Run 2:")
+    
+   
+    L1 = list(primerange(2, 251))[:50]  # First 50 prime numbers (different range)
+    L2 = [random.randint(50, 150) for _ in range(50)]  # 50 randomly generated integers in range [50, 150]
+
+    
+    S1 = set(L1)
+    S2 = set(L2)
+
+    
+    print(f"Number of elements in set S1 (Test Run 2): {len(S1)}")
+    print(f"Number of elements in set S2 (Test Run 2): {len(S2)}")
+
+    
+    R1 = S1.intersection(S2)  
+    R2 = S1.symmetric_difference(S2)  
+    
+    print(f"Number of elements in set R1 (Test Run 2): {len(R1)}")
+    print(f"Number of elements in set R2 (Test Run 2): {len(R2)}")  
+
+
+
+
+def task3():
+   
+    def tryTuple(*args):
+        if args:
+            return min(args), max(args), len(args)
+        else:
+            return None, None, 0
+
+    # Test run 1: tryTuple(3, 5, 12, 9, 1, 2)
+    result1 = tryTuple(3, 5, 12, 9, 1, 2)
+    print("Test Run 1 Result:", result1)
+
+    # Test run 2: tryTuple("hi", "bye", "happy")
+    result2 = tryTuple("hi", "bye", "happy")
+    print("Test Run 2 Result:", result2)
+
+    # Test run 3: tryTuple(["cat", 3], ["dog", 2])
+    result3 = tryTuple(["cat", 3], ["dog", 2])
+    print("Test Run 3 Result:", result3)
+    
+
+def main():
+    print("Task 1")
+    task1()
+    print()
+    print("Task 2")
+    task2()
+    print()
+    print("Task 3")
+    task3()
+main()
